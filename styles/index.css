@@ -23,3 +23,16 @@
   --fw-bold: var(--fw-700);
   --fw-regular: var(--fw-400);
 }
+
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  color: var(--clr-neutral-500);
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
