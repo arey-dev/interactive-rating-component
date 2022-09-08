@@ -1,0 +1,22 @@
+:root {
+  /* color */
+  --clr-primary-400: hsl(25, 97%, 53%);
+
+  --clr-neutral-400: hsl(0, 0%, 100%);
+  --clr-neutral-500: hsl(217, 12%, 63%);
+  --clr-neutral-600: hsl(216, 12%, 54%);
+  --clr-neutral-700: hsl(213, 19%, 18%);
+  --clr-neutral-800: hsl(216, 12%, 8%);
+
+  /* font size */
+  --fs-400: 0.9375rem;
+
+  --fs-body: var(--fw-400);
+  
+  /* font weight */
+  --fw-700: 700;
+  --fw-400: 400;
+
+  --fw-bold: var(--fw-700);
+  --fw-regular: var(--fw-400);
+}
