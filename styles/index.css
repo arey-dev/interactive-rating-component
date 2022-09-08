@@ -8,9 +8,12 @@
   --clr-neutral-700: hsl(213, 19%, 18%);
   --clr-neutral-800: hsl(216, 12%, 8%);
 
+  /* font family */
+  --ff-main: 'Overpass', sans-serif;
+  --ff-body: var(--ff-main);
+
   /* font size */
   --fs-400: 0.9375rem;
-
   --fs-body: var(--fw-400);
   
   /* font weight */
