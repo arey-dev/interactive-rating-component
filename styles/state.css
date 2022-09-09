@@ -1,0 +1,27 @@
+section {
+  --max-width: 26rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card .img-wrapper {
+  background-color: unset;
+  border-radius: unset;
+  padding: unset;
+  padding-top: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.highlight {
+  color: var(--clr-primary-400);
+  background-color: hsla(216, 12%, 8%, 0.4);
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  margin-bottom: 1.25rem;
+  line-height: 1;
+}
