@@ -1,10 +1,9 @@
-// pass css selector as param
-function renderElements (string) {
+function renderElements () {
   // get div container
-  const container = document.querySelector(string);
+  const container = document.querySelector('.container');
 
-  // get radio button rate
-  const radioVal = getRate('rating');
+  // get radio button value
+  const radioVal = getRate();
 
   // create elements for thank you card
   const div = document.createElement('div');
@@ -19,9 +18,11 @@ function renderElements (string) {
   p_highlight.className = 'highlight';
   p_heading.className = 'heading';
 
-  // add content to elements
+  //add attributes
   img.src = './images/illustration-thank-you.svg';
   img.ariaHidden = 'true';
+
+  // add content to elements
   p_highlight.textContent = 'You selected ' + radioVal + ' out of 5';
   p_heading.textContent = 'Thank you!';
   p_message.textContent = "We appreciate you taking the time to give a rating.If you ever need more support, don't hesitate to get in touch!";
@@ -34,21 +35,55 @@ function renderElements (string) {
   container.append(p_message);
 }
 
-function getRate(string) {
+function handleChecked(wrapper, input) {
+  if(input.checked) {
+    wrapper.classList.remove('checked');
+    input.checked = false;
+    return;
+  }
+  // clear checks
+  for(let wrapper of wrappers) {
+    wrapper.classList.remove('checked');
+  }
+
+  if(!input.checked) {
+    wrapper.classList.add('checked');
+    input.checked = true;
+  }
+}
+
+function getRate() {
   // get form
-  const rating = document.forms[string];
+  const rating = document.forms['rating'];
 
   // return radio value
   return rating.elements['rate'].value;
 }
 
-// element to be remove after submitting
-const rating = document.forms.rating;
-
+const wrappers = document.querySelectorAll('.value-wrapper');
+const radioDiv = document.querySelector('.radio-button-container');
 const btn = document.querySelector('input[type="submit"]');
 
+
 btn.addEventListener('click', function() {
-  renderElements('.container');
+  // render 'thank you' card
+  renderElements();
+  
+  // remove form
+  const rating = document.forms.rating;
   rating.remove();
+});
+
+radioDiv.addEventListener('click', function(event) {
+  if (event.target.className == 'radio-button-container' || event.target.tagName == 'LABEL') return;
+
+  // get div wrapper
+  const wrapper = event.target;
+
+  // get input
+  const input = wrapper.previousElementSibling;
+  handleChecked(wrapper, input);
+
+  event.preventDefault();
 });
 
