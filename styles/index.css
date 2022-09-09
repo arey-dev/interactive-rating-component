@@ -152,7 +152,7 @@ p {
   color: var(--clr-primary-400)
 }
 
-input:checked + .value-wrapper {
+.checked {
   background-color: var(--clr-primary-400);
   color: var(--clr-neutral-400);
 }
