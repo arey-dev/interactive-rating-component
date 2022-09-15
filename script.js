@@ -1,51 +1,45 @@
-function renderState () {
-  // get div container
-  const container = document.querySelector('.container');
-  container.classList.toggle('card');
+const submit = document.querySelector('input[type="button"]');
+const wrappers = document.querySelectorAll('.value-wrapper');
+const formContainer = document.querySelector('#form-container');
+const stateContainer = document.querySelector('#state-container');
+const radioContainer = document.querySelector('.radio-button-container');
 
-  // get radio button value
-  const radioVal = getRate();
+radioContainer.addEventListener('click', function(event) {
+  event.preventDefault();
+  if (event.target.className == 'radio-button-container' || event.target.tagName == 'li') return;
 
-  const div = document.createElement('div');
-  div.className = 'img-wrapper';
+  // get div wrapper
+  const wrapper = event.target;
   
-  const img = document.createElement('img');
-  img.src = './images/illustration-thank-you.svg';
-  img.ariaHidden = 'true';
-  div.append(img);
-  container.append(div);
-  
-  
-  const p_highlight = document.createElement('p');
-  p_highlight.className = 'highlight';
+  // get radio input
+  const radio = wrapper.firstElementChild;
 
-  // if user the user picked a rate, show rate
-  if(radioVal) {
-    p_highlight.textContent = 'You selected ' + radioVal + ' out of 5';
-    container.append(p_highlight);
-  }
-  
-  const p_heading = document.createElement('p');
-  p_heading.className = 'heading';
-  p_heading.textContent = 'Thank you!';
-  container.append(p_heading);
-  
-  const p_message = document.createElement('p');
-  p_message.textContent = "We appreciate you taking the time to give a rating.If you ever need more support, don't hesitate to get in touch!";
-  container.append(p_message);
-}
+  handleChecked(wrapper, radio);
+});
+
+submit.addEventListener('click', function() {
+  getRate();
+
+  // remove form
+  formContainer.style.display = 'none';
+
+  // show 'thank you' state
+  stateContainer.style.display = 'flex';
+});
 
 function getRate() {
-  // get form
-  const rating = document.forms.rating;
+  const form = document.forms.rating;
+  const value = form.elements['rate'].value;
+  const rateElem = document.querySelector('[data-rate-value]') 
 
-  // return radio value
-  return rating.elements['rate'].value;
+  if(value) { 
+    rateElem.textContent = value;
+  } else {
+    rateElem.parentElement.remove();
+  }
 }
 
-const wrappers = document.querySelectorAll('.value-wrapper');
 function handleChecked(wrapper, radio) {
-
   // condition to undo selection
   if(radio.checked) {
     wrapper.classList.remove('checked');
@@ -63,28 +57,3 @@ function handleChecked(wrapper, radio) {
     radio.checked = true;
   }
 }
-
-const radioDiv = document.querySelector('.radio-button-container');
-radioDiv.addEventListener('click', function(event) {
-  event.preventDefault();
-  if (event.target.className == 'radio-button-container' || event.target.tagName == 'li') return;
-
-  // get div wrapper
-  const wrapper = event.target;
-  
-  // get radio input
-  const radio = wrapper.firstElementChild;
-
-  handleChecked(wrapper, radio);
-});
-
-const submit = document.querySelector('input[type="submit"]');
-submit.addEventListener('click', function() {
-  // render 'thank you' card
-  renderState();
-  
-  // remove form
-  const rating = document.forms.rating;
-  rating.remove();
-});
-
