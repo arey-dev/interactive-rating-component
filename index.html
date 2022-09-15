@@ -23,7 +23,7 @@
   <main>
     <section>
       <h1 class="sr-only">Rating Component</h1>
-      <div class="container">
+      <div id="form-container" class="container">
         <form name="rating">
           <div class="img-wrapper">
             <img src="./images/icon-star.svg" alt="" aria-hidden="true">
@@ -51,9 +51,19 @@
                 <label class="value-wrapper"><input class="radio-input" type="radio" name="rate" value="5">5</label>
               </li>
             </ul>
-            <input class="button" type="submit" value="submit">
+            <input class="button" type="button" value="submit">
           </fieldset>
         </form>
+      </div>
+      <div id="state-container" class="container card">
+        <div class="img-wrapper">
+          <img src="./images/illustration-thank-you.svg" alt="" aria-hidden="true">
+        </div>
+        <p class="highlight">You selected <span data-rate-value></span> out of 5</p>
+        <p class="heading">Thank You!</p>
+        <p>
+          We appreciate you taking the time to give a rating.If you ever need more support, don't hesitate to get in touch!
+        </p>
       </div>
     </section>
   </main>
