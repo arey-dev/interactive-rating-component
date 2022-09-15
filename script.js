@@ -37,7 +37,7 @@ function renderState () {
 
 function getRate() {
   // get form
-  const rating = document.forms['rating'];
+  const rating = document.forms.rating;
 
   // return radio value
   return rating.elements['rate'].value;
@@ -67,13 +67,13 @@ function handleChecked(wrapper, radio) {
 const radioDiv = document.querySelector('.radio-button-container');
 radioDiv.addEventListener('click', function(event) {
   event.preventDefault();
-  if (event.target.className == 'radio-button-container' || event.target.tagName == 'LABEL') return;
+  if (event.target.className == 'radio-button-container' || event.target.tagName == 'li') return;
 
   // get div wrapper
   const wrapper = event.target;
   
   // get radio input
-  const radio = wrapper.previousElementSibling;
+  const radio = wrapper.firstElementChild;
 
   handleChecked(wrapper, radio);
 });
