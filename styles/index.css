@@ -62,7 +62,7 @@ main {
 }
 
 section {
-  --max-width: 27rem;
+  --max-width: 26.6rem;
   --padding-inline: 2rem;
 
   width: min(var(--max-width), 100% - var(--padding-inline));
@@ -70,7 +70,7 @@ section {
 
 .container {
   background-color: hsla(213, 20%, 18%, 0.7);
-  padding: 1.625rem;
+  padding: 1.625rem 1.8rem;
   border-radius: 1.5rem;
 }
 

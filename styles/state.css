@@ -1,7 +1,3 @@
-section {
-  --max-width: 26rem;
-}
-
 .card {
   display: flex;
   flex-direction: column;
